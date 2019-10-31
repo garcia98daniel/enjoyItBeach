@@ -37,7 +37,7 @@
           
           <div class="form-group has-feedback">
             <label>nombre</label>
-            <input type="text" class="form-control" name="name" >
+            <input type="text" class="form-control" name="nombre" >
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
           </div>
 

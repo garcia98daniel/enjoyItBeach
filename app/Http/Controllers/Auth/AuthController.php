@@ -94,7 +94,7 @@ class AuthController extends Controller
     protected function postRegister(Request $request){
 
         $this->validate($request, [
-            'name' => 'required',
+            'nombre' => 'required',
             'email' => 'required',
             'password' => 'required',
         ]);
@@ -104,7 +104,7 @@ class AuthController extends Controller
 
 
         $user=new User;
-        $user->name=$data['name'];
+        $user->nombre=$data['nombre'];
         $user->email=$data['email'];
         $user->password=bcrypt($data['password']);
 
