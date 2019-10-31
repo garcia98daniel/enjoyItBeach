@@ -27,7 +27,7 @@
   <body class="hold-transition login-page">
     <div class="login-box">
       <div class="login-logo">
-        <a href="#"><b>Sistema</b>Laravel</a>
+        <a href="#"><b>Enjoy it </b>Beach</a>
       </div><!-- /.login-logo -->
       <div class="login-box-body">
         <p class="login-box-msg">Registro en el sistema</p>
@@ -61,7 +61,7 @@
 
             
             <div class="col-xs-4">
-              <button type="submit" class="btn btn-primary btn-block btn-flat">Registrar</button>
+              <button type="submit" class="btn btn-primary btn-block btn-flat">Registrarse</button>
             </div><!-- /.col -->
           </div>
         </form>

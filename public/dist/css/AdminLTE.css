@@ -3184,6 +3184,7 @@ table.text-center th {
 .login-page,
 .register-page {
   background: #d2d6de;
+  /*background-image: url("./img/playa.jpg");*/
 }
 .login-box,
 .register-box {

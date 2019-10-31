@@ -23,6 +23,8 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css"> -->
   </head>
   <body class="hold-transition login-page">
     <div class="login-box">
@@ -32,7 +34,7 @@
       <div class="login-box-body">
         <p class="login-box-msg">Bienvenido</p>
         
-        <form action="login" method="post">
+        <form action="Login" method="POST">
             <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">   
 
           <div class="form-group has-feedback">
@@ -49,10 +51,10 @@
             
 
             
-            <div class="col-xs-4">
+            <div class="col-sm-10 col-sm-offset-1">
               <button type="submit" class="btn btn-primary btn-block btn-flat">Ingresar</button>
-            </div><!-- /.col -->
-          </div>
+              <a href="/register" class="">Registrate</a>
+            </div>
         </form>
 
      
@@ -79,7 +81,7 @@
         });
       });
     </script>
-
-
+<!-- <script src="js/sweetalert.min.js"></script> -->
+@include('sweetalert::alert')
   </body>
 </html>

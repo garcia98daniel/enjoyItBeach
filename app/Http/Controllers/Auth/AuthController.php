@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 use App\User;
+use RealRashid\SweetAlert\Facades\Alert;
+// Use Alert;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -51,29 +53,31 @@ class AuthController extends Controller
 
        protected function getLogin()
     {
-        return view("login");
+        return view("Login");
     }
 
 
        
 
-        public function postLogin(Request $request)
-   {
-    $this->validate($request, [
-        'email' => 'required',
-        'password' => 'required',
-    ]);
+    public function postLogin(Request $request) {
+        $this->validate($request, [
+            'email' => 'required',
+            'password' => 'required',
+        ]);
 
 
 
-    $credentials = $request->only('email', 'password');
+        $credentials = $request->only('email', 'password');
 
-    if ($this->auth->attempt($credentials, $request->has('remember')))
-    {
-        return view("home");
-    }
+        if ($this->auth->attempt($credentials, $request->has('remember')))
+        {
+            return view("home");
+        }else{
+            Alert::error('Verifique sus datos', 'error!');
+        }
 
-    return view()->with("msjerror","credenciales incorrectas");
+    
+    return view("Login");
 
     }
 
@@ -104,10 +108,11 @@ class AuthController extends Controller
         $user->email=$data['email'];
         $user->password=bcrypt($data['password']);
 
-
+        
         if($user->save()){
-
-            return "se ha registrado correctamente el usuario";
+           Alert::success('Registro exitoso');
+             // alert()->success('Bienvenido','Registro exitoso');
+            return redirect('Login');
                 
         }
     
@@ -120,7 +125,7 @@ class AuthController extends Controller
 
         Session::flush();
 
-        return redirect('login');
+        return redirect('Login');
     }
 
 }
