@@ -97,6 +97,7 @@ class AuthController extends Controller
             'nombre' => 'required',
             'email' => 'required',
             'password' => 'required',
+            'tipoUsuario' => 'required',
         ]);
 
 
@@ -106,6 +107,7 @@ class AuthController extends Controller
         $user=new User;
         $user->nombre=$data['nombre'];
         $user->email=$data['email'];
+        $user->rol_idRol=$data['tipoUsuario'];
         $user->password=bcrypt($data['password']);
 
         

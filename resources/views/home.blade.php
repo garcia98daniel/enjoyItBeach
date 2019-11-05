@@ -1,3 +1,81 @@
+<style>
+  .initial{
+    cursor: pointer;
+    margin: 20px 0;
+    border-radius: 8px;
+    height: 250px;
+    background-size: cover;
+    padding: 0 !important;
+  } 
+
+  .initial:hover{
+    filter: grayscale(0.9);
+  }
+
+  .carpas_inicio{
+    background-image: url("../imagenes/playa.jpg");
+    background-repeat: no-repeat;
+    background-position-y: -300px;
+  }
+  .comidas_inicio{
+    background-image: url("../imagenes/comidas.jpg");
+    background-repeat: no-repeat;
+    background-position-y: -170px;
+  }
+  .productos_inicio{
+    background-image: url("../imagenes/productos.jpg");
+    background-repeat: no-repeat;
+    background-position-y: -200px;
+  }
+
+  .text-initial-select h1{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    color: white;
+    font-weight: 800;
+    font-size: 5em;
+    margin: 0;
+  }
+
+  .text-initial-select h1:hover{
+   filter: brightness(0);
+  }
+
+  .li_menu:hover{
+    background: #1e282c;
+    border-left: solid white 3px;
+  }
+
+  .treeview-menu, .sidebar-menu{
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  @media (max-width:1090px){
+    .carpas_inicio{
+    background-position-y: 0;
+  }
+  .comidas_inicio{
+    background-position-y: 0;
+  }
+    .productos_inicio{
+      background-position-y: 0;
+    }
+  }
+
+  @media (max-width: 560px){
+    .text-initial-select h1{
+      font-size: 3em;
+    }
+  }
+
+
+</style>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -64,7 +142,7 @@
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                  <span class="hidden-xs">Usuario Plusis</span>
+                  <span class="hidden-xs">Usuario</span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
@@ -116,8 +194,8 @@
               <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-              <p>Usuario:Plusis</p>
-              <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+              <h4>{{ucfirst(trans(auth()->user()->nombre))}}</h4>
+              <!-- <a href="#"><i class="fa fa-circle text-success"></i> Online</a> -->
             </div>
           </div>
           <!-- search form -->
@@ -132,15 +210,15 @@
           <!-- /.search form -->
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
-            <li class="header">MENÚ</li>
+            <li class="header"><a href="/home" style="border: none;">INICIO</a></li>
             <li class="active treeview">
               <a href="#">
                 <i class="fa fa-dashboard"></i> <span>Disfruta de</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li class="active"><a href="javascript:void(0);" onclick="cargarformulario(1);" ><i class="fa fa-circle-o"></i>Carpas</a></li>
-                <li class="active"><a href="javascript:void(0);" onclick="cargarformulario(1);" ><i class="fa fa-circle-o"></i>Comidas</a></li>
-                <li class="active"><a href="javascript:void(0);" onclick="cargarformulario(1);" ><i class="fa fa-circle-o"></i>Productos y servicios</a></li>
+                <li class="active li_menu"><a href="javascript:void(0);" onclick="cargarformulario(1);" ><i class="fa fa-circle-o"></i>Carpas</a></li>
+                <li class="active li_menu"><a href="javascript:void(0);" onclick="cargarformulario(2);" ><i class="fa fa-circle-o"></i>Comidas</a></li>
+                <li class="active li_menu"><a href="javascript:void(0);" onclick="cargarformulario(3);" ><i class="fa fa-circle-o"></i>Productos y servicios</a></li>
               
               </ul>
             </li>
@@ -155,7 +233,8 @@
       </aside>
 
       <!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper" style="min-height:2000px !important;">
+      <div class="content-wrapper" >
+      <!-- <div class="content-wrapper" style="min-height:2000px !important;"> -->
         <!-- Content Header (Page header) -->
         <section class="content-header"> 
           <h1>
@@ -171,21 +250,26 @@
 
         <!-- contenido principal -->
         <section class="content"  id="contenido_principal">
-        <div class="container-fluid">
-          <div class="col-xs-10 col-xs-offset-1 bg-success" onclick="cargarformulario(1);">
-            carpas
+        @if(auth()->user()->rol_idRol!=2)
+          <div class="container-fluid">
+            <div class="col-xs-10 col-xs-offset-1 bg-success initial carpas_inicio" onclick="cargarformulario(1);">
+
+              <div class="text-initial-select"><h1>CARPAS</h1></div>
+            </div>
           </div>
-        </div>
-        <div class="container-fluid">
-          <div class="col-xs-10 col-xs-offset-1 bg-danger" onclick="cargarformulario(2);">
-            comidas
+          <div class="container-fluid">
+            <div class="col-xs-10 col-xs-offset-1 bg-danger initial comidas_inicio" onclick="cargarformulario(2);">
+              
+              <div class="text-initial-select"><h1>COMIDAS</h1></div>
+            </div>
           </div>
-        </div>
-        <div class="container-fluid">
-          <div class="col-xs-10 col-xs-offset-1 bg-primary" onclick="cargarformulario(3);">
-            productos y servicios
+          <div class="container-fluid">
+            <div class="col-xs-10 col-xs-offset-1 bg-primary initial productos_inicio" onclick="cargarformulario(3);">
+              
+              <div class="text-initial-select"><h1>PRODUCTOS Y SERVICIOS</h1></div>
+            </div>
           </div>
-        </div>
+        @endif
         </section>
     
       <!-- cargador empresa -->

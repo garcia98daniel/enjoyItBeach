@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
              $table->string('nombre', 60);
+             $table->integer('rol_idRol');
              // $table->string('apellido', 60)->nullable();
              // $table->integer('pais')->nullable();
              // $table->string('ciudad', 60)->nullable();

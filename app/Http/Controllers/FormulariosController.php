@@ -25,9 +25,19 @@ class FormulariosController extends Controller {
 
 
 	//presenta el formulario para nuevo usuario
-	public function form_nuevo_usuario()
+	public function carpas()
 	{
-		return view('formularios.form_nuevo_usuario');
+		return view('formularios.form_carpas');
+	}
+
+	public function comidas()
+	{
+		return view('formularios.form_comidas');
+	}
+
+	public function productos()
+	{
+		return view('formularios.form_productos');
 	}
 
 }

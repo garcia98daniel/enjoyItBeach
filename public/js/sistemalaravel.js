@@ -1,15 +1,21 @@
 function cargarformulario(arg){
 //funcion que carga todos los formularios del sistema
 
-		if(arg==1){ var url = "form_nuevo_usuario"; }
+        if(arg==1){ 
+            var url = "carpas";
+        }else if (arg==2){
+            var url = "comidas";
+        }else{
+            var url = "productos";
+        }
 
 
-		$("#contenido_principal").html($("#cargador_empresa").html());
-		   
-		    $.get(url,function(resul){
-		        $("#contenido_principal").html(resul);
+        $("#contenido_principal").html($("#cargador_empresa").html());
+           
+            $.get(url,function(resul){
+                $("#contenido_principal").html(resul);
 
-		    })
+            })
 
 
 }
@@ -28,8 +34,8 @@ function cargarformulario(arg){
         var formu=$(this);
         var quien=$(this).attr("id");
         
-        if(quien=="f_nuevo_usuario"){ 
-            var varurl="agregar_nuevo_usuario"; var divresul="notificacion_resul_fanu"; 
+        if(quien=="f_carpas"){ 
+            var varurl="reservar"; var divresul="notificacion_resul_fanu"; 
         }
         //me da una direccion
         $("#"+divresul+"").html($("#cargador_empresa").html());

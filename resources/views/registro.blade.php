@@ -54,12 +54,19 @@
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
 
-
+          <div class="custom-control custom-radio">
+            <h5> <strong>soy:</strong> </h5>
+              <div class="col-xs-6">
+                  <input type="radio" id="customRadio1" name="tipoUsuario" class="custom-control-input col-xs-6" value="1">
+                  <label class="custom-control-label" for="customRadio1">Consumidor</label>
+              </div>
+              <div class="col-xs-6">
+                  <input type="radio" id="customRadio2" name="tipoUsuario" class="custom-control-input " value="2">
+                  <label class="custom-control-label" for="customRadio2">Vendedor</label>
+              </div>
+          </div>
          
-          <div class="row">
-            
-
-            
+          <div class="row" style="margin-top: 50px;">
             <div class="col-xs-4">
               <button type="submit" class="btn btn-primary btn-block btn-flat">Registrarse</button>
             </div><!-- /.col -->

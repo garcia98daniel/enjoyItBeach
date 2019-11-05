@@ -35,5 +35,5 @@ Route::post('register', ['as' => 'auth/register', 'uses' => 'Auth\AuthController
 Route::get('/', 'HomeController@index');
 Route::get('home', 'HomeController@index'); 
 
-Route::get('form_nuevo_usuario', 'FormulariosController@form_nuevo_usuario');
-Route::post('agregar_nuevo_usuario', 'UsuariosController@agregar_nuevo_usuario');
+Route::get('carpas', 'FormulariosController@carpas');
+Route::post('reservar', 'ReservationController');
