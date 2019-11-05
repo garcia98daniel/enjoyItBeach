@@ -1,0 +1,17 @@
+.aprobado{
+text-align: center;
+background-color: lightgreen;
+border: 1px solid darkgreen;
+padding: 8px;
+margin-bottom: 10px;
+border-radius: 5px;
+}
+
+.rechazado{
+text-align: center;
+border-radius: 5px;
+background-color: #FFEDED;
+border: 1px solid #FA206A;
+padding: 8px;
+margin-bottom: 10px;
+}

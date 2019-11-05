@@ -36,4 +36,4 @@ Route::get('/', 'HomeController@index');
 Route::get('home', 'HomeController@index'); 
 
 Route::get('carpas', 'FormulariosController@carpas');
-Route::post('reservar', 'ReservationController');
+Route::post('reservar', 'ReservationController@store');

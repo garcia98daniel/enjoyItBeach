@@ -36,7 +36,7 @@
       
           
       
-      <form  id="f_nuevo_usuario"  method="POST"  action="agregar_nuevo_usuario" class="form-horizontal form_entrada" >  
+      <form  id="f_carpas"  method="POST"  action="reservar" class="form-horizontal form_entrada" >  
         
         <div id="notificacion_resul_fanu"></div>    
       

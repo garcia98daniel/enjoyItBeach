@@ -44,11 +44,28 @@ class ReservationController extends Controller
      */
     public function store(Request $request)
     {
-        $datos = $request->all();
-        reservation::insert($datos);
-        // return $datos;
-        Alert::success('Registro exitoso');
-        return redirect('home');
+       // dd($request);
+        $reserva = new reservation();
+        // $reserva->idReserva = $request->get('');
+        $reserva->fecha = $request->get('fecha');
+        $reserva->horaInicio = $request->get('horaInicio');
+        $reserva->duracion = $request->get('duracion');
+        $reserva->idUser =  auth()->user()->id;
+        $reserva->idCarpa = $request->get('carpa');
+
+        $resul=$reserva->save();
+
+        // Alert::success('Registro exitoso');
+        if($resul){
+            
+            return view("mensajes.msj_correcto")->with("msj","Reserva realizada");   
+        }
+        else
+        {
+             
+             return view("mensajes.msj_rechazado")->with("msj","Ups!, hubo un error");  
+
+        }
     }
 
     /**

@@ -14,7 +14,10 @@ class CreateTentsTable extends Migration
     public function up()
     {
         Schema::create('tents', function (Blueprint $table) {
-            $table->bigIncrements('id');
+           $table->Increments('idReserva');
+            $table->string('playa');
+            $table->string('nombre');
+            $table->smallInteger('capacidad');
             $table->timestamps();
         });
     }

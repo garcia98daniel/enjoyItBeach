@@ -15,6 +15,9 @@ class CreatePurchasesTable extends Migration
     {
         Schema::create('purchases', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('idProducto');
+            $table->date('fecha');
+            $table->integer('idUser');
             $table->timestamps();
         });
     }
