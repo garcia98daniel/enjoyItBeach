@@ -33,14 +33,16 @@ class FormulariosController extends Controller {
 
 	public function comidasCosumidor()
 	{
-		$comidas= product::paginate(25);
+		$comidas= product::where('idCategoria', '=', 1)->paginate(15);
         // dd($comida);
         return view('formularios.listaComidasConsumidor')->with("comidas", $comidas );
 	}
 
-	public function productos_consumidor()
+	public function productosConsumidor()
 	{
-		return view('formularios.form_productos_consumidor');
+		$productos= product::where('idCategoria', '=', 2)->paginate(15);
+        // dd($comida);
+        return view('formularios.listaProductosConsumidor')->with("productos", $productos );
 	}
 
 }

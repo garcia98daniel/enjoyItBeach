@@ -87,27 +87,27 @@ input[type=number]
 
                 
     <div class="box-header">
-      <h3 class="box-title">Comidas tipicas</h3>
+      <h3 class="box-title">Productos y servicios</h3>
     </div><!-- /.box-header -->
-    @if(count($comidas)>0)
+    @if(count($productos)>0)
       <div id="notificacion_resul_fanu"></div> 
-      @foreach ($comidas as $comida)
+      @foreach ($productos as $producto_servicio)
     <div class="box box-primary col-xs-12">
       <form  id="f_carpas"  method="POST"  action="reservar" class="form-horizontal form_entrada product_container" >      
         <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">              
           <div class="form-group col-xs-12">
-            <h2>{{$comida->nombre}}</h2>
+            <h2>{{$producto_servicio->nombre}}</h2>
                 <img class="" src="" alt="imagen_del_producto ">
             <div class="row">
               <div class="descripcion text-left col-md-5">
-                {{$comida->descripcion}}
+                {{$producto_servicio->descripcion}}
               </div>
             </div>
-            <div><h3>precio <small>x</small> unidad</h3><h4><strong>COP. </strong>{{$comida->precio}}</h4></div>
+            <div><h3>precio <small>x</small> unidad</h3><h4><strong>COP. </strong>{{$producto_servicio->precio}}</h4></div>
           </div>
           
           <div class="box-footer col-xs-12 ">
-              <p>Cantidad disponible: {{$comida->cantidad}}</p>
+              <p>Cantidad disponible: {{$producto_servicio->cantidad}}</p>
               <div class="quantity">
                 <input type="number" min="1" max="30" step="1" value="1">
               </div>
@@ -117,7 +117,7 @@ input[type=number]
     </div>
       @endforeach
     @else
-      <h2>Lo sentimos, No hay comidas disponibles en el momento</h2>
+      <h2>Lo sentimos, no hay productos disponibles en el momento</h2>
     @endif  
 
 

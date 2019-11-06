@@ -36,5 +36,6 @@ Route::get('/', 'HomeController@index');
 Route::get('home', 'HomeController@index'); 
 
 Route::get('comidas', 'FormulariosController@comidasCosumidor');
+Route::get('productos', 'FormulariosController@productosConsumidor');
 Route::get('carpas', 'FormulariosController@carpas');
 Route::post('reservar', 'ReservationController@store');
