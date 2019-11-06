@@ -18,6 +18,8 @@ class CreateProductsTable extends Migration
             $table->string('nombre');
             $table->integer('precio');
             $table->integer('cantidad');
+            $table->integer('idCategoria');
+            $table->integer('idVendedor');
             $table->string('descripcion');
             $table->timestamps();
         });

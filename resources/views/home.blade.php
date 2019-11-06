@@ -142,15 +142,15 @@
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                  <span class="hidden-xs">Usuario</span>
+                  <span class="hidden-xs">{{ucfirst(trans(auth()->user()->nombre))}}</span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
                     <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                     <p>
-                     Usuario Plusis
-                      <small>Member since Nov. 2012</small>
+                     {{{ucfirst(trans(auth()->user()->nombre))}}}
+                      <small>Member since {{auth()->user()->created_at->format('d/m/Y')}}</small>
                     </p>
                   </li>
                   <!-- Menu Body -->

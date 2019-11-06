@@ -1,7 +1,9 @@
 <?php namespace App\Http\Controllers;
 
 use App\product;
-class FormulariosController extends Controller {
+
+
+class ListadoController extends Controller {
 
 	/*
 	|--------------------------------------------------------------------------
@@ -26,21 +28,12 @@ class FormulariosController extends Controller {
 
 
 	//presenta el formulario para nuevo usuario
-	public function carpas()
-	{
-		return view('formularios.form_carpas');
+		public function listado_comidas()
+   {
+        $comida= product::paginate(25);
+        
+        return view('formulario.listaComidasConsumidor')->with("comida", $comida );
 	}
 
-	public function comidasCosumidor()
-	{
-		$comidas= product::paginate(25);
-        // dd($comida);
-        return view('formularios.listaComidasConsumidor')->with("comidas", $comidas );
-	}
-
-	public function productos_consumidor()
-	{
-		return view('formularios.form_productos_consumidor');
-	}
 
 }

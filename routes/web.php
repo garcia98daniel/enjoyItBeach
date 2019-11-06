@@ -35,5 +35,6 @@ Route::post('register', ['as' => 'auth/register', 'uses' => 'Auth\AuthController
 Route::get('/', 'HomeController@index');
 Route::get('home', 'HomeController@index'); 
 
+Route::get('comidas', 'FormulariosController@comidasCosumidor');
 Route::get('carpas', 'FormulariosController@carpas');
 Route::post('reservar', 'ReservationController@store');

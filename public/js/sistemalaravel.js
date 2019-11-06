@@ -20,7 +20,23 @@ function cargarformulario(arg){
 
 }
 
+function cargarlistado(listado){
 
+    //funcion para cargar los diferentes  en general
+
+if(listado==1){ var url = "listado_usuarios"; }
+
+$("#contenido_principal").html($("#cargador_empresa").html());
+
+    
+    $.get(url,function(resul){
+
+        $("#contenido_principal").html(resul); 
+   })
+
+
+
+}
 
 
  $(document).on("submit",".form_entrada",function(e){ //atrapa todo formulario que tenga el nombre de .form_entrada
@@ -57,3 +73,21 @@ function cargarformulario(arg){
                 // y los envia por el metodo post
 
 })
+
+  $(document).on("click",".pagination li a",function(e){
+
+ e.preventDefault();
+
+ var url =$( this).attr("href");
+
+ $("#contenido_principal").html($("#cargador_empresa").html());
+
+    
+    $.get(url,function(resul){
+
+        $("#contenido_principal").html(resul); 
+   })
+
+
+
+  })
