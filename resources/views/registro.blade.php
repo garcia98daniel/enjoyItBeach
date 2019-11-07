@@ -1,3 +1,58 @@
+<style>
+  body{
+    background-image: url('../imagenes/playabg.jpg');
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .contenedor_login{
+    min-width: 30%;
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: white;
+    padding: 50px;
+    padding-top: 20px;
+    border-radius: 8px;
+  }
+
+  .imagenlogo{
+    height: 60vh;
+    width: 100%;
+    background-image: url('../imagenes/logo.jpeg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-bottom: 20px;
+  }
+
+    @media (max-width: 560px){
+      .imagenlogo{
+        height: 40vh;
+      }
+   }
+
+  .form{
+    width: 100%;
+  }
+
+  .form-control{
+    margin-bottom: 10px !important;
+  }
+
+  .boton{
+    background-color: #5db2e3;
+    color: white !important;
+  }
+
+  .boton:hover{
+    color: white !important;
+  }
+</style>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -8,34 +63,22 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+    
+    <script src="../../plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <!-- Bootstrap 3.3.5 -->
+    <script src="../../bootstrap/js/bootstrap.min.js"></script>
     <!-- iCheck -->
-    <link rel="stylesheet" href="plugins/iCheck/square/blue.css">
+    <!-- <script src="../../plugins/iCheck/icheck.min.js"></script> -->
+   </head>
+  <body>
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body class="hold-transition login-page">
-    <div class="login-box">
-      <div class="login-logo">
-        <a href="#"><b>Enjoy it </b>Beach</a>
-      </div><!-- /.login-logo -->
-      <div class="login-box-body">
-        <p class="login-box-msg">Registro en el sistema</p>
-       
-        <form action="register" method="post">
-      <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">   
-          
-          <div class="form-group has-feedback">
+    <div class="contenedor_login">
+      <!-- <img src="../imagenes/logo.jpeg" alt="" class="imagenlogo"> -->
+      <h2>Enjoy<small>It</small><strong>Beach</strong></h2>
+      <strong>Registrate </strong>
+      <form action="register" method="post" class="form">
+        <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">  
+        <div class="form-group has-feedback">
             <label>nombre</label>
             <input type="text" class="form-control" name="nombre" >
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
@@ -56,36 +99,23 @@
 
           <div class="custom-control custom-radio">
             <h5> <strong>soy:</strong> </h5>
-              <div class="col-xs-6">
-                  <input type="radio" id="customRadio1" name="tipoUsuario" class="custom-control-input col-xs-6" value="1">
+              <div class="col-md-6 col-xs-12">
+                  <input type="radio" id="customRadio1" name="tipoUsuario" class="custom-control-input" value="1">
                   <label class="custom-control-label" for="customRadio1">Consumidor</label>
               </div>
-              <div class="col-xs-6">
+              <div class="col-md-6 col-xs-12">
                   <input type="radio" id="customRadio2" name="tipoUsuario" class="custom-control-input " value="2">
                   <label class="custom-control-label" for="customRadio2">Vendedor</label>
               </div>
           </div>
          
-          <div class="row" style="margin-top: 50px;">
-            <div class="col-xs-4">
-              <button type="submit" class="btn btn-primary btn-block btn-flat">Registrarse</button>
-            </div><!-- /.col -->
-          </div>
-        </form>
+          <button class="btn btn-block boton">Registrarse</button>
+          <a href="/Login" class="">Tengo una cuenta</a>
+      </form>
+    </div>
 
-     
-       
 
-      </div><!-- /.login-box-body -->
-    </div><!-- /.login-box -->
 
-    <!-- jQuery 2.1.4 -->
-    <script src="../../plugins/jQuery/jQuery-2.1.4.min.js"></script>
-    <!-- Bootstrap 3.3.5 -->
-    <script src="../../bootstrap/js/bootstrap.min.js"></script>
-    <!-- iCheck -->
-    <script src="../../plugins/iCheck/icheck.min.js"></script>
-   
 
     <script>
       
@@ -97,7 +127,7 @@
         });
       });
     </script>
-
-    
+<!-- <script src="js/sweetalert.min.js"></script> -->
+@include('sweetalert::alert')
   </body>
 </html>

@@ -82,6 +82,14 @@ input[type=number]
   margin-bottom: 50px;
   border-radius: 10px;
 }
+
+.compra{
+  display: flex;
+  justify-content: space-between;
+}
+.btn{
+  height: 40px;
+}
 </style>
 
 
@@ -108,10 +116,12 @@ input[type=number]
           
           <div class="box-footer col-xs-12 ">
               <p>Cantidad disponible: {{$producto_servicio->cantidad}}</p>
-              <div class="quantity">
-                <input type="number" min="1" max="30" step="1" value="1">
+              <div class="compra">
+                <div class="quantity">
+                  <input type="number" min="1" max="30" step="1" value="1">
+                </div>
+                <button type="submit" class="btn btn-primary ">Hacer pedido</button>
               </div>
-              <button type="submit" class="btn btn-primary col-xs-offset-10">Comprar</button>
           </div>
       </form>
     </div>

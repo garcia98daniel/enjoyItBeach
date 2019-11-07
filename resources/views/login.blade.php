@@ -1,3 +1,57 @@
+<style>
+  body{
+    background-image: url('../imagenes/playabg.jpg');
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .contenedor_login{
+    min-width: 30%;
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: white;
+    padding: 50px;
+    border-radius: 8px;
+  }
+
+  .imagenlogo{
+    height: 60vh;
+    width: 100%;
+    background-image: url('../imagenes/logo.jpeg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-bottom: 20px;
+  }
+
+    @media (max-width: 560px){
+      .imagenlogo{
+        height: 40vh;
+      }
+   }
+
+  .form{
+    width: 100%;
+  }
+
+  .form-control{
+    margin-bottom: 10px !important;
+  }
+
+  .boton{
+    background-color: #5db2e3;
+    color: white !important;
+  }
+
+  .boton:hover{
+    color: white !important;
+  }
+</style>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -8,68 +62,29 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-    <!-- iCheck -->
-    <link rel="stylesheet" href="plugins/iCheck/square/blue.css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css"> -->
-  </head>
-  <body class="hold-transition login-page">
-    <div class="login-box">
-      <div class="login-logo">
-        <a href="#"><b>Enjoy it </b>Beach</a>
-      </div><!-- /.login-logo -->
-      <div class="login-box-body">
-        <p class="login-box-msg">Bienvenido</p>
-        
-        <form action="Login" method="POST">
-            <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">   
-
-          <div class="form-group has-feedback">
-
-                <input type="email" class="form-control" name="email" >
-            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-          </div>
-          <div class="form-group has-feedback">
-            <input type="password" class="form-control" name="password">
-            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-          </div>
-         
-          <div class="row">
-            
-
-            
-            <div class="col-sm-10 col-sm-offset-1">
-              <button type="submit" class="btn btn-primary btn-block btn-flat">Ingresar</button>
-              <a href="/register" class="">Registrate</a>
-            </div>
-        </form>
-
-     
-       
-
-      </div><!-- /.login-box-body -->
-    </div><!-- /.login-box -->
-
-    <!-- jQuery 2.1.4 -->
+    
     <script src="../../plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
     <script src="../../bootstrap/js/bootstrap.min.js"></script>
     <!-- iCheck -->
     <script src="../../plugins/iCheck/icheck.min.js"></script>
-   
+   </head>
+  <body>
+
+    <div class="contenedor_login">
+      <!-- <img src="../imagenes/logo.jpeg" alt="" class="imagenlogo"> -->
+      <div class="imagenlogo"></div>
+      <form action="Login" method="POST" class="form">
+        <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">  
+        <input type="email" class="form-control" name="email" placeholder="correo" >
+        <input type="password" class="form-control" name="password" placeholder="contraseña">
+        <button class="btn btn-block boton">Inicio</button>
+      </form>
+      <a href="/register" class="">Registrate</a>
+    </div>
+
+
+
 
     <script>
       

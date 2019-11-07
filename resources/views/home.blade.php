@@ -1,4 +1,15 @@
 <style>
+.skin-blue .main-header .navbar {
+    background-color: #5db2e3 !important;
+}
+
+.skin-blue .main-header .logo {
+    background-color: #5db2e3 !important;
+    color: #fff;
+    border-bottom: 0 solid transparent;
+}
+
+
   .initial{
     cursor: pointer;
     margin: 20px 0;
@@ -9,13 +20,14 @@
   } 
 
   .initial:hover{
-    filter: grayscale(0.9);
+    /*filter: grayscale(0.9);*/
+    transform: scale(0.9);
   }
 
   .carpas_inicio{
-    background-image: url("../imagenes/playa.jpg");
+    background-image: url("../imagenes/modulos.jpeg");
     background-repeat: no-repeat;
-    background-position-y: -300px;
+    background-position-y: -200px;
   }
   .comidas_inicio{
     background-image: url("../imagenes/comidas.jpg");
@@ -42,7 +54,7 @@
   }
 
   .text-initial-select h1:hover{
-   filter: brightness(0);
+   /*filter: brightness(0);*/
   }
 
   .li_menu:hover{
@@ -71,6 +83,14 @@
     .text-initial-select h1{
       font-size: 3em;
     }
+  }
+
+  .desarrollo{
+    display: flex;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    font-size: 9px;
   }
 
 
@@ -122,7 +142,7 @@
 
       <header class="main-header">
         <!-- Logo -->
-        <a href="index2.html" class="logo">
+        <a href="/home" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini"><b>E</b>B</span>
           <!-- logo for regular state and mobile devices -->
@@ -154,7 +174,7 @@
                     </p>
                   </li>
                   <!-- Menu Body -->
-                  <li class="user-body">
+<!--                   <li class="user-body">
                     <div class="col-xs-4 text-center">
                       <a href="#">Followers</a>
                     </div>
@@ -164,7 +184,7 @@
                     <div class="col-xs-4 text-center">
                       <a href="#">Friends</a>
                     </div>
-                  </li>
+                  </li> -->
                   <!-- Menu Footer-->
                   <li class="user-footer">
                     <div class="pull-left">
@@ -222,12 +242,10 @@
               
               </ul>
             </li>
-
-  
-           
-           
-          
           </ul>
+          <div class="desarrollo">
+            <p>Designed and developed by<a href="https://www.facebook.com/daniel98garcia"> Daniel garcia</a></p>
+          </div>
         </section>
         <!-- /.sidebar -->
       </aside>
