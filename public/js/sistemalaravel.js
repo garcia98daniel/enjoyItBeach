@@ -5,8 +5,32 @@ function cargarformulario(arg){
             var url = "carpas";
         }else if (arg==2){
             var url = "comidas";
-        }else{
+        }else if(arg==3){
             var url = "productos";
+        }else{
+            var url = arg;
+        }
+
+        //console.log(url);
+
+
+        $("#contenido_principal").html($("#cargador_empresa").html());
+           
+            $.get(url,function(resul){
+                $("#contenido_principal").html(resul);
+
+            })
+
+
+}
+
+function cargarformularioVendedor(arg){
+//funcion que carga todos los formularios del sistema
+
+        if(arg==1){ 
+            var url = "productosVendedor";
+        }else if (arg==2){
+            var url = "comidas";
         }
 
 

@@ -89,9 +89,6 @@ input[type=number]
   align-items: center;
 }
 
-.btn{
-  height: 40px;
-}
 </style>
 
 
@@ -99,30 +96,30 @@ input[type=number]
     <div class="box-header">
       <h3 class="box-title">Comidas tipicas</h3>
     </div><!-- /.box-header -->
-    @if(count($comidas)>0)
+    @if(count($productos)>0)
       <div id="notificacion_resul_fanu"></div> 
-      @foreach ($comidas as $comida)
+      @foreach ($productos as $producto)
     <div class="box box-primary col-xs-12">
       <form  id="f_carpas"  method="POST"  action="reservar" class="form-horizontal form_entrada product_container" >      
         <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">              
           <div class="form-group col-xs-12">
-            <h2>{{$comida->nombre}}</h2>
+            <h2>{{$producto->nombre}}</h2>
                 <img class="" src="" alt="imagen_del_producto ">
             <div class="row">
               <div class="descripcion text-left col-md-5">
-                {{$comida->descripcion}}
+                {{$producto->descripcion}}
               </div>
             </div>
-            <div><h3>precio <small>x</small> unidad</h3><h4><strong>COP. </strong>{{$comida->precio}}</h4></div>
+            <div><h3>precio <small>x</small> unidad</h3><h4><strong>COP. </strong>{{$producto->precio}}</h4></div>
           </div>
           
           <div class="box-footer col-xs-12 ">
-              <p>Cantidad disponible: {{$comida->cantidad}}</p>
+              <p>Cantidad disponible: {{$producto->cantidad}}</p>
               <div class="compra">
                 <div class="quantity">
                   <input type="number" min="1" max="30" step="1" value="1">
                 </div>
-                <button type="submit" class="btn btn-primary ">Hacer pedido</button>
+                <a type="submit" class="btn btn-primary m-auto" href="confirmacionPedido">Hacer pedido</a>
               </div>
           </div>
       </form>

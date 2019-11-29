@@ -51,7 +51,7 @@ class ReservationController extends Controller
         $reserva->horaInicio = $request->get('horaInicio');
         $reserva->duracion = $request->get('duracion');
         $reserva->idUser =  auth()->user()->id;
-        $reserva->idCarpa = $request->get('carpa');
+        $reserva->idCarpa = $request->get('bloque')."".$request->get('carpa');
 
         $resul=$reserva->save();
 

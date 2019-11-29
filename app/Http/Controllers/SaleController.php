@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\sale;
 use Illuminate\Http\Request;
-
+use RealRashid\SweetAlert\Facades\Alert;
 class SaleController extends Controller
 {    public function __construct()
     {
@@ -14,6 +14,11 @@ class SaleController extends Controller
     public function __invoke(Request $request)
     {
         
+    }
+
+    public function confirmarPedido(){
+       Alert::success('PEDIDO REALIZADO CON EXITO');
+       return redirect('home'); 
     }
     /**
      * Display a listing of the resource.

@@ -37,7 +37,16 @@ Route::post('register', ['as' => 'auth/register', 'uses' => 'Auth\AuthController
 Route::get('/', 'HomeController@index');
 Route::get('home', 'HomeController@index'); 
 
-Route::get('comidas', 'FormulariosController@comidasCosumidor');
-Route::get('productos', 'FormulariosController@productosConsumidor');
+Route::get('confirmacionPedido', 'SaleController@confirmarPedido');
+
+Route::get('comidas', 'FormulariosController@showRestaurants');
+Route::get('comidas/{id}', 'FormulariosController@showComidasRestaurante');
+
+Route::get('productos', 'FormulariosController@showStores');
+Route::get('productos/{id}', 'FormulariosController@showProductosTienda');
+
 Route::get('carpas', 'FormulariosController@carpas');
 Route::post('reservar', 'ReservationController@store');
+
+Route::get('productosVendedor', 'FormulariosController@showProductosVendedor');
+// Route::get('productos/{id}', 'FormulariosController@showProductosTienda');

@@ -79,27 +79,36 @@
           </div>
         
           <div class="form-group col-xs-12">
-                <label for="carpa">Carpa</label>
+                <label for="carpa">Bloque</label>
+                               
+               <select id="bloque" name="bloque" class="form-control">
+                  <option value="A">A</option>
+                  <option value="B">B</option>
+                  <option value="C">C</option>
+                  <option value="D">D</option>
+                  <option value="E">E</option>
+                  <option value="F">F</option>
+                  <option value="G">G</option>
+                  <option value="H">H</option>
+                  <option value="I">I</option>
+                  <option value="J">J</option>
+              </select>
+          </div>
+
+          <div class="form-group col-xs-12">
+                <label for="carpa">Nº Carpa</label>
                                
                <select id="carpa" name="carpa" class="form-control">
-                  <option value="A1">A1</option>
-                  <option value="A2">A2</option>
-                  <option value="A3">A3</option>
-                  <option value="A4">A4</option>
-                  <option value="A5">A5</option>
-                  <option value="B1">B1</option>
-                  <option value="B2">B2</option>
-                  <option value="B3">B3</option>
-                  <option value="C1">C1</option>
-                  <option value="C2">C2</option>
-                  <option value="C3">C3</option>
-                  <option value="C4">C4</option>
-                  <option value="D1">D1</option>
-                  <option value="D2">D2</option>
-                  <option value="D3">D3</option>
-                  <option value="D4">D4</option>
-                  <option value="D5">D5</option>
-                  <option value="D6">D6</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
               </select>
           </div>
         

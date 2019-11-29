@@ -2,14 +2,22 @@
   body{
     background-image: url('../imagenes/playabg.jpg');
     background-repeat: no-repeat;
+    background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
+  @media (min-height:  600px){
+      body{
+        overflow: hidden;
+      }
+   }
+
   .contenedor_login{
     min-width: 30%;
     min-height: 100%;
+    max-height: 600px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,6 +32,7 @@
     width: 100%;
     background-image: url('../imagenes/logo.jpeg');
     background-size: contain;
+    background-position-x: center;
     background-repeat: no-repeat;
     margin-bottom: 20px;
   }

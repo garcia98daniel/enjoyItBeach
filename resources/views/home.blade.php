@@ -233,14 +233,20 @@
             <li class="header"><a href="/home" style="border: none;">INICIO</a></li>
             <li class="active treeview">
               <a href="#">
-                <i class="fa fa-dashboard"></i> <span>Disfruta de</span> <i class="fa fa-angle-left pull-right"></i>
+                <i class="fa fa-dashboard"></i> <span>Menu</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
+              @if(auth()->user()->rol_idRol!=2)
               <ul class="treeview-menu">
                 <li class="active li_menu"><a href="javascript:void(0);" onclick="cargarformulario(1);" ><i class="fa fa-circle-o"></i>Carpas</a></li>
                 <li class="active li_menu"><a href="javascript:void(0);" onclick="cargarformulario(2);" ><i class="fa fa-circle-o"></i>Comidas</a></li>
                 <li class="active li_menu"><a href="javascript:void(0);" onclick="cargarformulario(3);" ><i class="fa fa-circle-o"></i>Productos y servicios</a></li>
-              
               </ul>
+              @else
+              <ul class="treeview-menu">
+                <li class="active li_menu"><a href="javascript:void(0);" onclick="cargarformularioVendedor(1);" ><i class="fa fa-circle-o"></i>Mis productos</a></li>
+                <li class="active li_menu"><a href="javascript:void(0);" onclick="cargarformularioVendedor(2);" ><i class="fa fa-circle-o"></i>Pedidos</a></li>
+              </ul>
+              @endif
             </li>
           </ul>
           <div class="desarrollo">
@@ -255,10 +261,17 @@
       <!-- <div class="content-wrapper" style="min-height:2000px !important;"> -->
         <!-- Content Header (Page header) -->
         <section class="content-header"> 
+          @if(auth()->user()->rol_idRol!=2)
           <h1>
             Disfruta
             <small>de</small>
           </h1>
+          @else
+          <h1>
+            Menu
+            <small>opciones</small>
+          </h1>
+          @endif
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i>Inicio</a></li>
             <li class="active">Dashboard</li>
@@ -285,6 +298,19 @@
             <div class="col-xs-10 col-xs-offset-1 bg-primary initial productos_inicio" onclick="cargarformulario(3);">
               
               <div class="text-initial-select"><h1>PRODUCTOS Y SERVICIOS</h1></div>
+            </div>
+          </div>
+        @else
+          <div class="container-fluid">
+            <div class="col-xs-10 col-xs-offset-1 bg-success initial " onclick="cargarformularioVendedor(1);">
+
+              <div class="text-initial-select"><h1  style="color: #222d32; background: lightgreen;">Mis productos</h1></div>
+            </div>
+          </div>
+          <div class="container-fluid">
+            <div class="col-xs-10 col-xs-offset-1 bg-danger initial " onclick="cargarformularioVendedor(2);">
+              
+              <div class="text-initial-select"><h1 style="color: #222d32; background: lightblue;" >Pedidos</h1></div>
             </div>
           </div>
         @endif
@@ -315,7 +341,7 @@
      
     </div><!-- ./wrapper -->
 
-
+@include('sweetalert::alert')
     <!-- jQuery 2.1.4 -->
     <script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- jQuery UI 1.11.4 -->

@@ -1,6 +1,14 @@
 <?php namespace App\Http\Controllers;
 
 use App\product;
+use App\User;
+use App\DB;
+use Auth;
+// use RealRashid\SweetAlert\Facades\Alert;
+// Use Alert;
+use Validator;
+use Session;
+
 class FormulariosController extends Controller {
 
 	/*
@@ -31,18 +39,55 @@ class FormulariosController extends Controller {
 		return view('formularios.form_carpas');
 	}
 
-	public function comidasCosumidor()
+	public function showRestaurants()
 	{
-		$comidas= product::where('idCategoria', '=', 1)->paginate(15);
-        // dd($comida);
-        return view('formularios.listaComidasConsumidor')->with("comidas", $comidas );
+		$restaurantes = DB::table('users')
+				   ->where('users.rol_idRol', '=', '2')
+				   ->select('users.id','users.nombre as nombre')
+				   ->join('products','users.id', '=', 'products.idVendedor' )  
+				   ->where('products.idCategoria', '=', '1')
+				   ->groupBy('users.id')
+				   ->get();
+        // dd($restaurantes);
+        return view('formularios.listaRestaurantes')->with("restaurantes", $restaurantes );
 	}
 
-	public function productosConsumidor()
+
+	public function showComidasRestaurante($id)
 	{
-		$productos= product::where('idCategoria', '=', 2)->paginate(15);
-        // dd($comida);
-        return view('formularios.listaProductosConsumidor')->with("productos", $productos );
+		$productos= product::where('idCategoria', '=', 1)
+								->where('idVendedor', '=', $id);
+        
+        return view('formularios.listaComidasConsumidor')->with("productos", $productos );
+	}
+
+	public function showStores()
+	{
+		$tiendas = DB::table('users')
+				   ->where('users.rol_idRol', '=', '2')
+				   ->select('users.id','users.nombre as nombre')
+				   ->join('products','users.id', '=', 'products.idVendedor' )  
+				   ->where('products.idCategoria', '=', '2')
+				   ->groupBy('users.id')
+				   ->get();
+		// dd($tiendas);
+        return view('formularios.listaTiendas')->with("tiendas", $tiendas );
+        
+	}
+
+	public function showProductosTienda($id)
+	{
+		$productos= product::where('idCategoria', '=', 2)
+								->where('idVendedor', '=', $id);
+        
+        return view('formularios.listaComidasConsumidor')->with("productos", $productos );
+	}
+
+	public function showProductosVendedor(){
+		$misProductos = product::where('idVendedor', '=', Auth::user()->id)
+								 ->get();
+
+		return view('formularios.misProductos')->with("misProductos", $misProductos);
 	}
 
 }
