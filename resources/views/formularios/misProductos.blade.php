@@ -99,7 +99,7 @@ input[type=number]
     </div><!-- /.box-header -->
           <div class="col-xs-12" style="margin-top: 20px; margin-bottom: 10px;  ">
 
-            <form  id="f_carpas"  method="POST"  action="reservar" class="form-horizontal form_entrada product_container " >      
+            <form  id="f_productosVendedor"  method="POST"  action="" class="form-horizontal form_entrada product_container " >      
               <input  type="hidden" name="_token" value="<?php echo csrf_token(); ?>">              
                 <div class="form-group col-xs-12">
                   <div class="row aling-items-center"> 
@@ -108,22 +108,35 @@ input[type=number]
                   </div>
                   <div class="row aling-items-center"> 
                     <h4 class="col-xs-4">Descripcion</h4>
-                    <input required="" autocomplete="off" class="col-xs-8" style="margin-top: 8px;" type="text" name="nombre">
+                    <input required="" autocomplete="off" class="col-xs-8" style="margin-top: 8px;" type="text" name="descripcion">
                   </div>
                   <div class="row aling-items-center"> 
                     <h4 class="col-xs-4">Precio x unidad</h4>
-                    <input required="" autocomplete="off" class="col-xs-8" style="margin-top: 8px;" type="number" name="nombre">
+                    <input required="" autocomplete="off" class="col-xs-8" style="margin-top: 8px;" type="number" name="precio">
                   </div>
                   <div class="row aling-items-center"> 
                     <h4 class="col-xs-4">Cantidad disponible</h4>
-                    <input required="" autocomplete="off" class="col-xs-8" style="margin-top: 8px;" type="number" name="nombre">
+                    <input required="" autocomplete="off" class="col-xs-8" style="margin-top: 8px;" type="number" name="cantidad">
+                  </div>
+
+                  <div class="custom-control custom-radio row">
+                  <h4 class="col-xs-2">Tipo de producto</h4>
+                    <div class="col-xs-2" style="padding-top: 10px;">
+                        <input type="radio" id="customRadio1" name="categoria" class="custom-control-input " value="1">
+                        <label class="custom-control-label" for="customRadio1">Comestible</label>
+                    </div>
+                    <div style="padding-top: 10px;">
+                        <input type="radio" id="customRadio2" name="categoria" class="custom-control-input " value="2">
+                        <label class="custom-control-label" for="customRadio2">No comestible</label>
+                    </div>
                   </div>
                 </div>
-                
                 <div class=" col-xs-12 ">
-                     <button type="submit" class="btn btn-success center-block" style="width: 50%; border-radius: 8px; margin-bottom: 10px;">agregar</button>
+                     <button type="submit" class="btn btn-success center-block" style="width: 50%; border-radius: 6px; margin-bottom: 10px;">Agregar</button>
             </form>
           </div>
+    <div id="cargarSeccion">
+     
     @if(count($misProductos)>0)
       <div id="notificacion_resul_fanu"></div> 
 
@@ -160,4 +173,4 @@ input[type=number]
       <h2>No tienes productos agrega uno.</h2>
 
     @endif  
-
+  </div>   

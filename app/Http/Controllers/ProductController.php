@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\product;
+use Auth;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -43,7 +44,15 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product = new product();
+        $product->nombre = $request->get('nombre');
+        $product->descripcion = $request->get('descripcion');
+        $product->precio = $request->get('precio');
+        $product->cantidad = $request->get('cantidad');
+        $product->idCategoria = $request->get('categoria');
+        $product->idVendedor = Auth::user()->id;
+
+        $resul=$product->save();
     }
 
     /**

@@ -41,12 +41,12 @@ Route::get('confirmacionPedido', 'SaleController@confirmarPedido');
 
 Route::get('comidas', 'FormulariosController@showRestaurants');
 Route::get('comidas/{id}', 'FormulariosController@showComidasRestaurante');
-
 Route::get('productos', 'FormulariosController@showStores');
 Route::get('productos/{id}', 'FormulariosController@showProductosTienda');
-
 Route::get('carpas', 'FormulariosController@carpas');
-Route::post('reservar', 'ReservationController@store');
-
 Route::get('productosVendedor', 'FormulariosController@showProductosVendedor');
+
 // Route::get('productos/{id}', 'FormulariosController@showProductosTienda');
+
+Route::post('reservar', 'ReservationController@store');
+Route::resource('addProduct','ProductController');

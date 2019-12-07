@@ -58,8 +58,8 @@ function cargarformularioVendedor(arg){
         
         if(quien=="f_carpas"){ 
             var varurl="reservar"; var divresul="notificacion_resul_fanu"; 
-        }
-        //me da una direccion
+
+            //me da una direccion
         $("#"+divresul+"").html($("#cargador_empresa").html());
 
               $.ajax({
@@ -78,22 +78,49 @@ function cargarformularioVendedor(arg){
                 });
                 // y los envia por el metodo post
 
+        }else if(quien=="f_productosVendedor"){
+            var varurl="addProduct"; var divresul="notificacion_resul_fanu";
+
+            //me da una direccion
+        $("#"+divresul+"").html($("#cargador_empresa").html());
+
+              $.ajax({
+
+                    type: "POST",
+                    url : varurl,
+                    datatype:'json',
+                    data : formu.serialize(),
+                    success : function(resul){
+
+                        $("#"+divresul+"").html(resul);
+                        $('#'+quien+'').trigger("reset");
+                        cargarformularioVendedor(1);
+                    }
+                        
+                });
+                // y los envia por el metodo post
+                        
+
+        }
+        
+
 })
 
-  $(document).on("click",".pagination li a",function(e){
+                $(document).on("click",".pagination li a",function(e){
 
- e.preventDefault();
+                 e.preventDefault();
 
- var url =$( this).attr("href");
+                 var url =$(this).attr("href");
 
- $("#contenido_principal").html($("#cargador_empresa").html());
+                 $("#contenido_principal").html($("#cargador_empresa").html());
 
-    
-    $.get(url,function(resul){
+                    
+                    $.get(url,function(resul){
 
-        $("#contenido_principal").html(resul); 
-   })
+                        $("#contenido_principal").html(resul); 
+                   })
 
 
 
-  })
+                  })
+  
