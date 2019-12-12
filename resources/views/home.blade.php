@@ -173,23 +173,9 @@
                       <small>Member since {{auth()->user()->created_at->format('d/m/Y')}}</small>
                     </p>
                   </li>
-                  <!-- Menu Body -->
-<!--                   <li class="user-body">
-                    <div class="col-xs-4 text-center">
-                      <a href="#">Followers</a>
-                    </div>
-                    <div class="col-xs-4 text-center">
-                      <a href="#">Sales</a>
-                    </div>
-                    <div class="col-xs-4 text-center">
-                      <a href="#">Friends</a>
-                    </div>
-                  </li> -->
-                  <!-- Menu Footer-->
+                  
                   <li class="user-footer">
-                    <div class="pull-left">
-                      <a href="#" class="btn btn-default btn-flat">Perfil</a>
-                    </div>
+                    
                     <div class="pull-right">
                       <a href="logout" class="btn btn-default btn-flat">Salir</a>
                     </div>
@@ -197,10 +183,15 @@
                 </ul>
               </li>
               <!-- Control Sidebar Toggle Button -->
-              <li>
-                <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-              </li>
-            </ul>
+              @if(auth()->user()->rol_idRol!=2)
+                <li style="height: 50px;" onclick="cargarformulario(4)">
+                  <a href="#" data-toggle="control-sidebar" style="padding: 0; margin: 0; height: inherit; ">
+                    <i class="fa" style="height: inherit; display: flex; align-items: center; justify-content: center;">
+                      <img src="imagenes/carrito.png" alt="" style="height: 35px; filter: brightness(0.5);">
+                    </i>
+                  </a>
+                </li>
+              @endif
           </div>
         </nav>
       </header>

@@ -100,8 +100,10 @@ input[type=number]
       <div id="notificacion_resul_fanu"></div> 
       @foreach ($productos as $producto)
     <div class="box box-primary col-xs-12">
-      <form  id="f_carpas"  method="POST"  action="reservar" class="form-horizontal form_entrada product_container" >      
-        <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">              
+      <form  id="f_pedidos"  method="POST"  action="" class="form-horizontal form_entrada product_container" >      
+        <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">  
+        <input type="hidden" name="id" value="{{$producto->id}}">
+        <input type="hidden" name="precio" value="{{$producto->precio}}">        
           <div class="form-group col-xs-12">
             <h2>{{$producto->nombre}}</h2>
                 <img class="" src="" alt="imagen_del_producto ">
@@ -114,19 +116,19 @@ input[type=number]
           </div>
           
           <div class="box-footer col-xs-12 ">
-              <p>Cantidad disponible: {{$producto->cantidad}}</p>
+              <p >Cantidad disponible: {{$producto->cantidad}}</p>
               <div class="compra">
                 <div class="quantity">
-                  <input type="number" min="1" max="30" step="1" value="1">
+                  <input type="number" name="cantidad" min="1" max="30" step="1" value="1">
                 </div>
-                <a type="submit" class="btn btn-primary m-auto" href="confirmacionPedido">Hacer pedido</a>
+                <button type="submit" class="btn btn-primary">Hacer perdido</button>
               </div>
           </div>
       </form>
     </div>
       @endforeach
     @else
-      <h2>Lo sentimos, No hay comidas disponibles en el momento</h2>
+      <h2>Lo sentimos, No hay productos disponibles en el momento</h2>
     @endif  
 
 

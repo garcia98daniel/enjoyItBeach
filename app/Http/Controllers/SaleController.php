@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\sale;
+use App\purchase;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 class SaleController extends Controller
@@ -17,8 +18,7 @@ class SaleController extends Controller
     }
 
     public function confirmarPedido(){
-       Alert::success('PEDIDO REALIZADO CON EXITO');
-       return redirect('home'); 
+       
     }
     /**
      * Display a listing of the resource.
@@ -48,7 +48,27 @@ class SaleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         // dd('hola');
+            $venta = new sale();
+            $venta->idProducto = $request->get('idProducto');
+            $venta->idComprador = $request->get('idComprador');
+            $venta->cantidad = $request->get('cantidad');
+            $venta->precio =  $request->get('precio');
+            // dd($request->get('compra'));
+            $compra = purchase::find($request->get('compra'));
+            $compra->confirmado = 1;
+
+            $compra->save();
+            $resul=$venta->save();
+
+            if($resul){
+            
+              return view("mensajes.msj_correcto")->with("msj","Pedido aprobado, recargue para ver los cambios");   
+            }else{
+                 
+              return view("mensajes.msj_rechazado")->with("msj","Ups!, hubo un error");  
+
+            }
     }
 
     /**

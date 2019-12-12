@@ -135,7 +135,6 @@ input[type=number]
                      <button type="submit" class="btn btn-success center-block" style="width: 50%; border-radius: 6px; margin-bottom: 10px;">Agregar</button>
             </form>
           </div>
-    <div id="cargarSeccion">
      
     @if(count($misProductos)>0)
       <div id="notificacion_resul_fanu"></div> 
@@ -143,7 +142,8 @@ input[type=number]
       @foreach ($misProductos as $miProducto)
     <div class="box box-primary col-xs-12">
 
-      <form  id="f_carpas"  method="POST"  action="reservar" class="form-horizontal form_entrada product_container" >      
+      <form value="{{$miProducto->id}}" id="cartas_productos"  method="POST" class="form-horizontal form_entrada product_container" >   
+
         <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">              
           <div class="form-group col-xs-12">
             <h2>{{$miProducto->nombre}}</h2>
@@ -161,8 +161,7 @@ input[type=number]
               <div class="compra">
                 <div></div>
                 <div>
-                  <button type="submit" class="btn btn-primary ">Editar</button>
-                  <button type="submit" class="btn btn-danger ">Eliminar</button>
+                  <button type="submit" class="btn btn-danger" >Eliminar</button>
                 </div>
               </div>
           </div>
@@ -173,4 +172,3 @@ input[type=number]
       <h2>No tienes productos agrega uno.</h2>
 
     @endif  
-  </div>   

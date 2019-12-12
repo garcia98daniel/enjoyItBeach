@@ -2,7 +2,9 @@
 
 use App\product;
 use App\User;
-use App\DB;
+use App\purchase;
+use App\reservation;
+use Illuminate\Support\Facades\DB;
 use Auth;
 // use RealRashid\SweetAlert\Facades\Alert;
 // Use Alert;
@@ -56,8 +58,10 @@ class FormulariosController extends Controller {
 	public function showComidasRestaurante($id)
 	{
 		$productos= product::where('idCategoria', '=', 1)
-								->where('idVendedor', '=', $id);
-        
+								->where('idVendedor', '=', $id)
+								->get();
+
+        //dd($productos);
         return view('formularios.listaComidasConsumidor')->with("productos", $productos );
 	}
 
@@ -78,16 +82,59 @@ class FormulariosController extends Controller {
 	public function showProductosTienda($id)
 	{
 		$productos= product::where('idCategoria', '=', 2)
-								->where('idVendedor', '=', $id);
+								->where('idVendedor', '=', $id)
+								->get();
         
         return view('formularios.listaComidasConsumidor')->with("productos", $productos );
 	}
 
+	public function misPedidos()
+	{
+
+		$pedidos= DB::table('purchases')
+				   ->select('purchases.created_at','purchases.cantidad','purchases.confirmado','purchases.precio','products.nombre','reservations.idCarpa')
+
+				   ->join('products','products.id', '=', 'purchases.idProducto' )
+				   ->join('reservations','reservations.idUser', '=', 'purchases.idUser')
+
+					->where('purchases.idUser', '=', Auth::user()->id)
+				   ->where('purchases.fecha', '=', 'reservations.fecha')
+
+				   ->orderBy('created_at', 'desc')
+				   ->get();
+
+		$reservas = reservation::where('idUser', '=', Auth::user()->id)
+								 ->get(); 
+
+		// dd($pedidos);		   
+        return view('formularios.misPedidos')->with("pedidos", $pedidos )->with("reservas", $reservas );
+	}
+
+//funciones del modulo de vendedor
 	public function showProductosVendedor(){
 		$misProductos = product::where('idVendedor', '=', Auth::user()->id)
 								 ->get();
 
 		return view('formularios.misProductos')->with("misProductos", $misProductos);
+	}
+
+	public function showPedidosRestaurant(){
+		$pedidos = DB::table('purchases')
+				   ->select('purchases.created_at','purchases.cantidad','purchases.confirmado','purchases.precio','products.nombre','reservations.idCarpa','users.nombre as username','products.id','purchases.idUser','purchases.id as idCompra')
+
+				   ->join('products','products.id', '=', 'purchases.idProducto' )
+				   ->join('reservations','reservations.idUser', '=', 'purchases.idUser')
+				   ->join('users','users.id', '=', 'purchases.idUser')
+
+				   ->where('products.idVendedor', '=', Auth::user()->id)
+				   ->where('purchases.fecha', '=', 'reservations.fecha')
+
+				   ->orderBy('created_at', 'desc')
+				   ->get();
+
+				   // dd($pedidos);
+
+		return view('formularios.pedidos')->with("pedidos", $pedidos);
 	}
 
 }

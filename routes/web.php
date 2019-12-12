@@ -44,9 +44,14 @@ Route::get('comidas/{id}', 'FormulariosController@showComidasRestaurante');
 Route::get('productos', 'FormulariosController@showStores');
 Route::get('productos/{id}', 'FormulariosController@showProductosTienda');
 Route::get('carpas', 'FormulariosController@carpas');
-Route::get('productosVendedor', 'FormulariosController@showProductosVendedor');
-
-// Route::get('productos/{id}', 'FormulariosController@showProductosTienda');
-
 Route::post('reservar', 'ReservationController@store');
-Route::resource('addProduct','ProductController');
+// Route::get('misReservas', 'ReservationController@index');
+Route::get('hacerPedido', 'PurchaseController@store');
+Route::get('misPedidos', 'FormulariosController@misPedidos');
+
+//rutas para el vendedor
+Route::post('addProduct','ProductController@store');
+Route::delete('deleteProduct/{id}','ProductController@eliminar');
+Route::get('productosVendedor', 'FormulariosController@showProductosVendedor');
+Route::get('pedidos', 'FormulariosController@showPedidosRestaurant');
+Route::get('confirmarPedido', 'SaleController@store');

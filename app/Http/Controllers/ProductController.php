@@ -97,6 +97,13 @@ class ProductController extends Controller
      */
     public function destroy(product $product)
     {
-        //
+        $product->delete();
+    }
+
+    public function eliminar($id)
+    {   
+        $product = product::findOrFail($id);
+         // dd($product);
+        $product->delete();
     }
 }

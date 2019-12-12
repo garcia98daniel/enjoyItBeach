@@ -7,6 +7,8 @@ function cargarformulario(arg){
             var url = "comidas";
         }else if(arg==3){
             var url = "productos";
+        }else if(arg==4){
+            var url = "misPedidos";
         }else{
             var url = arg;
         }
@@ -30,7 +32,7 @@ function cargarformularioVendedor(arg){
         if(arg==1){ 
             var url = "productosVendedor";
         }else if (arg==2){
-            var url = "comidas";
+            var url = "pedidos";
         }
 
 
@@ -56,7 +58,7 @@ function cargarformularioVendedor(arg){
         var formu=$(this);
         var quien=$(this).attr("id");
         
-        if(quien=="f_carpas"){ 
+        if(quien=="f_carpas"){ // reserva carpas al usuario
             var varurl="reservar"; var divresul="notificacion_resul_fanu"; 
 
             //me da una direccion
@@ -77,11 +79,28 @@ function cargarformularioVendedor(arg){
 
                 });
                 // y los envia por el metodo post
+        }else if(quien=="f_pedidos"){ //agrega productos del vendedor
+            var varurl="hacerPedido"; var divresul="notificacion_resul_fanu";
 
-        }else if(quien=="f_productosVendedor"){
+        $("#"+divresul+"").html($("#cargador_empresa").html());
+
+              $.ajax({
+
+                    type: "GET",
+                    url : varurl,
+                    datatype:'json',
+                    data : formu.serialize(),
+                    success : function(resul){
+
+                        $("#"+divresul+"").html(resul);
+                        $('#'+quien+'').trigger("reset");
+                    }
+                        
+                });
+                
+        }else if(quien=="f_productosVendedor"){ //agrega productos del vendedor
             var varurl="addProduct"; var divresul="notificacion_resul_fanu";
 
-            //me da una direccion
         $("#"+divresul+"").html($("#cargador_empresa").html());
 
               $.ajax({
@@ -98,29 +117,66 @@ function cargarformularioVendedor(arg){
                     }
                         
                 });
-                // y los envia por el metodo post
+                
+        }else if(quien=="cartas_productos"){ //eliminar producto No lo hace
+            var value = $(this).attr("value");
+             // console.log(value);
+            var varurl=`deleteProduct/${value}`; var divresul="notificacion_resul_fanu";
+
+
+        $("#"+divresul+"").html($("#cargador_empresa").html());
+
+              $.ajax({
+
+                    type: "DELETE",
+                    url : varurl,
+                    datatype:'json',
+                    data : formu.serialize(),
+                    success : function(resul){
+
+                        $("#"+divresul+"").html(resul);
+                        $('#'+quien+'').trigger("reset");
+                        cargarformularioVendedor(1)
+                    }
                         
+                });
+        }else if(quien=="pedidoConfirmado"){ //aprueba la compra
+            var varurl="confirmarPedido"; var divresul="notificacion_resul_fanu";
+            
+        $("#"+divresul+"").html($("#cargador_empresa").html());
 
+              $.ajax({
+
+                    type: "GET",
+                    url : varurl,
+                    datatype:'json',
+                    data : formu.serialize(),
+                    success : function(resul){
+                        
+                        $("#"+divresul+"").html(resul);
+                        $('#'+quien+'').trigger("reset");
+                        
+                    cargarformularioVendedor(2)
+                    }
+                });
         }
-        
-
 })
 
-                $(document).on("click",".pagination li a",function(e){
+$(document).on("click",".pagination li a",function(e){
 
-                 e.preventDefault();
+ e.preventDefault();
 
-                 var url =$(this).attr("href");
+ var url =$(this).attr("href");
 
-                 $("#contenido_principal").html($("#cargador_empresa").html());
+ $("#contenido_principal").html($("#cargador_empresa").html());
 
-                    
-                    $.get(url,function(resul){
+    
+    $.get(url,function(resul){
 
-                        $("#contenido_principal").html(resul); 
-                   })
+        $("#contenido_principal").html(resul); 
+   })
 
 
 
-                  })
+  })
   
