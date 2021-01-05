@@ -53,7 +53,7 @@ class AuthController extends Controller
 
        protected function getLogin()
     {
-        return view("Login");
+        return view("login");
     }
 
 
